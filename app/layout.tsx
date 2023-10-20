@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/providers/theme";
 import Navigation from "@/components/navigation";
+import { AuthConfig } from "./api/auth/[...nextauth]/route";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default async function RootLayout(props: {
   children: React.ReactNode;
   modal: React.ReactNode;
 }) {
-  const session = await getServerSession();
+  const session = await getServerSession(AuthConfig);
 
   return (
     <html lang="en">

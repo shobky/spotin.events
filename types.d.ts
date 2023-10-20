@@ -1,4 +1,4 @@
-export type Event = {
+export type EventT = {
   id: string;
   type: string;
   name: string;
@@ -9,3 +9,5 @@ export type Event = {
   location: string;
   article?: string;
 };
+
+export type ViewT = "modal" | "editor-view" | "page";

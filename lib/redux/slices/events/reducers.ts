@@ -1,27 +1,22 @@
-import { Event } from "@/types";
+import { EventT } from "@/types";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 interface EventsState {
-  events: Event[];
-  searchQuery: string;
+  events: EventT[];
 }
 
 const initialState: EventsState = {
   events: [],
-  searchQuery: "",
 };
 
 export const eventsSlice = createSlice({
   name: "events",
   initialState,
   reducers: {
-    populate: (state, action: PayloadAction<{ events: Event[] }>) => {
+    populate: (state, action: PayloadAction<{ events: EventT[] }>) => {
       state.events = action.payload.events;
-    },
-    search: (state, action: PayloadAction<{ q: string }>) => {
-      state.searchQuery = action.payload.q;
     },
   },
 });
 
-export const { populate, search } = eventsSlice.actions;
+export const { populate } = eventsSlice.actions;

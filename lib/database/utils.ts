@@ -7,9 +7,9 @@ import {
 } from "firebase/firestore";
 import { db } from "@/firebase/config";
 
-export const getEvents = async (n: number) => {
+export const getEvents = async (n?: number) => {
   let data: any[] = [];
-  const q = query(collection(db, "events"), limit(n));
+  const q = query(collection(db, "events"), limit(n || 100));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach(doc => {
     let buffer = {

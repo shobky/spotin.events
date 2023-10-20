@@ -1,6 +1,7 @@
 import React from "react";
 import Searchbox from "./common/searchBox";
 import Filters from "./common/filters";
+import Banner from "./banner";
 
 export default function Menu() {
   return (
@@ -13,7 +14,7 @@ export default function Menu() {
           <Searchbox />
           <Filters />
         </section>
-        {/* <Banner /> */}
+        <Banner />
       </div>
     </div>
   );

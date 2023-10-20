@@ -1,16 +1,15 @@
+import Events from "@/components/events";
 import Menu from "@/components/menu";
 import { getEvents } from "@/lib/database/utils";
-import { Event } from "@/types";
+import { EventT } from "@/types";
 
 export default async function Home() {
-  let firstEventsPatch: Event[] = await getEvents(5);
+  let firstEventsPatch: EventT[] = await getEvents(5);
 
   return (
-    <main>
-      <Menu/>
-      {/* {firstEventsPatch.map(event => (
-        <p key={event.id}>{event.name}</p>
-      ))} */}
+    <main className="flex gap-4 sm:gap-10 ">
+      <Menu />
+      <Events firstEventsPatch={firstEventsPatch} />
     </main>
   );
 }
