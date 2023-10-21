@@ -24,7 +24,7 @@ export default async function RootLayout(props: {
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className + " pb-5"}>
         <ThemeProvider>
           <Toaster />
           <SessionProvider session={session}>

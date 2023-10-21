@@ -1,26 +1,16 @@
 import React from "react";
-import Wrapper from "./_wrapper";
 import Searchbox from "@/components/common/searchBox";
 import Filters from "@/components/common/filters";
 import EventDetails from "@/components/events/details";
 import DetailsSkeleton from "@/components/loadingUI/detailsSkeleton";
+import { getEvents } from "@/lib/database/utils";
+import { EventT } from "@/types";
+import RecommededEvents from "@/components/events/recommeded";
 
 export default async function Page({ params }: { params: { id: string } }) {
-  let event: any | undefined;
+  let events: EventT[] = await getEvents(4);
 
-  try {
-    const res = await fetch(
-      `https://firestore.googleapis.com/v1/projects/spotin-89dc7/databases/(default)/documents/events/${params.id}`
-    );
-    const data = await res.json();
-    event = data.fields;
-  } catch (err) {
-    console.log(err);
-  }
 
-  if (!event) {
-    return <>no event found</>;
-  }
   return (
     <div className=" flex flex-col md:flex-row justify-between gap-10 ">
       <div className="md:w-[70%]">
@@ -29,8 +19,11 @@ export default async function Page({ params }: { params: { id: string } }) {
           className="md:fixed w-full md:w-[55%] "
         >
           <>
-            {event ? (
-              <EventDetails view="page" event={event} />
+            {events ? (
+              <EventDetails
+                view="page"
+                event={events.filter(e => e.id === params.id)[0]}
+              />
             ) : (
               <DetailsSkeleton />
             )}
@@ -42,7 +35,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Searchbox />
           <Filters />
         </section>
-        {/* <OtherEvents active={params.id} /> */}
+        <RecommededEvents active={params.id} events={events} />
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
 import { eventsSlice } from "./slices/events/reducers";
-import { modalSlice } from "./slices/modal/reducers";
+import { eventActiveSlice } from "./slices/eventActive/reducers";
 import { searchSlice } from "./slices/search/reducers";
 
 export const reducer = {
   events: eventsSlice.reducer,
   search: searchSlice.reducer,
-  modal: modalSlice.reducer,
+  eventActive: eventActiveSlice.reducer,
 };

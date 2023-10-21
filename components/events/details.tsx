@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { EventT, ViewT } from "@/types";
 import CloseModal from "../modal/close";
+import { format, lightFormat } from "date-fns";
 
 type Props = {
   event: EventT;
@@ -12,9 +13,8 @@ type Props = {
 export default function EventDetails({ event, view }: Props) {
   return (
     <div
-      className={` flex flex-col sm:flex-row flex-shrink-0  ${
-        view !== "modal" ? "h-[75vh]" : "h-[100%]"
-      } ${view && ` border  rounded-3xl`}  w-full relative text-foreground `}
+      className={` flex flex-col sm:flex-row flex-shrink-0  h-[100%]
+       ${view && ` border  rounded-3xl`}  w-full relative text-foreground `}
     >
       <CloseModal view={view} />
       <Image
@@ -29,21 +29,15 @@ export default function EventDetails({ event, view }: Props) {
       >
         <div className=" event-details flex justify-between items-center">
           <div>
-            {/* @ts-ignore */}
-            <h1 className="text-3xl font-semibold">
-              {event?.name.stringValue}
-            </h1>
-            {/* @ts-ignore */}
-            <h3 className="font-light text-sm">
-              with {event?.facilitator.stringValue}
-            </h3>
+            <h1 className="text-3xl font-semibold">{event?.name}</h1>
+            <h3 className="font-light text-sm">with {event?.facilitator}</h3>
           </div>
           {/* <SaveButton name={event?.name} /> */}
         </div>
         <hr className=" opacity-15 border-stone-800 " />
         <h2 className="grid gap-1 items-start relative">
           <span className="block bg-green-400 rounded-full w-2 h-2 absolute top-[8px]"></span>
-          <span className="ml-4  -mb-2 "> 08:30 PM</span> Wednesday, 27 December
+          <span className="ml-4  -mb-2 "> 08:30 PM</span> {format(event.date, "LLLL do, yyyy")}
         </h2>
         <article className="text-sm ">
           <p>

@@ -8,7 +8,7 @@ import { ViewT } from "@/types";
 export default function CloseModal({ view }: { view: ViewT }) {
   const router = useRouter();
   const handleCloseModal = () => {
-    if ((view = "modal")) {
+    if (view === "modal") {
       router.back();
     } else {
       router.push("/");
@@ -16,10 +16,11 @@ export default function CloseModal({ view }: { view: ViewT }) {
   };
   return (
     <Button
+      disabled={view === "editor-view"}
       variant={"ghost"}
       size={"icon"}
       className=" rounded-full absolute top-0 left-0 m-3 z-20 scale-90 text-white "
-      onClick={view === "modal" ? handleCloseModal : handleCloseModal}
+      onClick={handleCloseModal}
     >
       <Cross1Icon className="" />
     </Button>

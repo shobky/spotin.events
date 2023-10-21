@@ -3,8 +3,8 @@ import EventDetails from "@/components/events/details";
 import Modal from "@/components/modal";
 import { useSelector } from "@/lib/redux";
 import {
+  selectEventActive,
   selectEvents,
-  selectSelectedModalEvent,
 } from "@/lib/redux/slices/selectors";
 import { EventT } from "@/types";
 import React from "react";
@@ -15,7 +15,7 @@ type Params = {
 
 export default function Page(params: Params) {
   const { events } = useSelector(selectEvents);
-  const { selectedModalEvent } = useSelector(selectSelectedModalEvent);
+  const { selectedModalEvent } = useSelector(selectEventActive);
 
   const event: EventT[] = events?.filter(item => item.id === params.id);
   return (

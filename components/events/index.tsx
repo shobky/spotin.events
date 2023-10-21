@@ -21,6 +21,7 @@ export default function Events({
     dispatch(eventsSlice.actions.populate({ events: firstEventsPatch }));
   }, [firstEventsPatch]);
 
+
   return (
     <div className="flex flex-col w-full  gap-2">
       <h1 className="hidden sm:inline-flex text-[2.6rem] md:text-[3.2rem] -mt-[1.2rem] font-semibold">

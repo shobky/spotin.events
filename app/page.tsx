@@ -7,7 +7,7 @@ export default async function Home() {
   let firstEventsPatch: EventT[] = await getEvents(5);
 
   return (
-    <main className="flex gap-4 sm:gap-10 ">
+    <main className="flex flex-col sm:flex-row gap-4 sm:gap-10 ">
       <Menu />
       <Events firstEventsPatch={firstEventsPatch} />
     </main>
