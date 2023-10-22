@@ -7,28 +7,40 @@ import { selectEvents, selectSearchQuery } from "@/lib/redux/slices/selectors";
 import { useSelector } from "@/lib/redux";
 import Image from "next/image";
 
-export default function EventList({ events }: { events: EventT[] }) {
+export default function EventList({
+  recommendedEvents,
+}: {
+  recommendedEvents?: EventT[];
+}) {
   const { searchQuery, filters } = useSelector(selectSearchQuery);
+  const { events } = useSelector(selectEvents);
 
-  const filteredEvents = events.filter(event => {
-    if (
-      event.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      filters.some(
-        filter =>
-          filter.checked &&
-          event.type.toLowerCase() === filter.name.toLowerCase()
-      )
-    ) {
-      return event;
-    }
-    if (filters[0].checked === true) {
-      return event;
+  const eventsToFilter = recommendedEvents ?? events;
+  const filteredEvents = eventsToFilter.filter(event => {
+    if (filters[0].checked && searchQuery.length < 1) {
+      return true;
+    } else {
+      if (
+        filters.some(
+          f =>
+            f.checked === true &&
+            f.name.toLocaleLowerCase() === event.type.toLocaleLowerCase() &&
+            event.name.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      ) {
+        return event;
+      } else if (
+        event.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+        filters[0].checked
+      ) {
+        return event;
+      }
     }
   });
 
   return (
     <div className="min-h-[40vh] grid gap-2 lg:grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] w-full">
-      {events && events?.length > 0 ? (
+      {eventsToFilter && eventsToFilter?.length > 0 ? (
         filteredEvents.length > 0 ? (
           filteredEvents.map(event => <Event event={event} key={event.id} />)
         ) : (

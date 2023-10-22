@@ -9,7 +9,6 @@ import EventList from "@/components/events/eventList";
 
 export default async function Page({ params }: { params: { id: string } }) {
   let events: EventT[] = await getEvents(8);
-  const recommeded = events.filter(e => e.id !== params.id);
 
   if (!events) {
     return <p>something went wrong</p>;
@@ -38,7 +37,9 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Searchbox />
           <Filters />
         </section>
-        <EventList events={recommeded} />
+        <EventList
+          recommendedEvents={events.filter(e => e.id !== params.id)}
+        />
       </div>
     </div>
   );

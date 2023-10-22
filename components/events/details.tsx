@@ -12,6 +12,9 @@ type Props = {
 };
 
 export default function EventDetails({ event, view }: Props) {
+  if (!event) {
+    return <>something went wrong, REFRESH.</>;
+  }
   return (
     <div
       className={` flex flex-col sm:flex-row flex-shrink-0  h-[100%]
