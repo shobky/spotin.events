@@ -38,6 +38,10 @@ export const eventActiveSlice = createSlice({
       state,
       action: PayloadAction<{ field: string; value: any }>
     ) => {
+      console.log({
+        field: action.payload.field,
+        value: action.payload.value,
+      });
       state.newEvent = {
         ...state.newEvent,
         [action.payload.field]: action.payload.value,

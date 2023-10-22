@@ -14,7 +14,7 @@ export default function AuthBtn() {
         signIn("google");
         setLoading(true);
       }}
-      className=" w-[calc(100%-1rem)] flex items-center justify-center p-1 h-14 text-white text-sm font-light gap-2 backdrop-blur-2xl mx-2 rounded-3xl "
+      className=" w-[calc(100%-1rem)] flex items-center justify-center p-1 h-14 text-white text-md font-light gap-2 backdrop-blur-2xl mx-2 rounded-3xl "
     >
       Welcome back!
       <span className="font-normal flex items-center bg-primary bg-opacity-20 hover:bg-orange-500 p-3  gap-1 rounded-3xl">
@@ -29,7 +29,7 @@ export default function AuthBtn() {
               : " relative -left-1 rounded-l-3xl invert animate-spin"
           }
         />{" "}
-        Signin
+        Sign In
       </span>
     </button>
   );

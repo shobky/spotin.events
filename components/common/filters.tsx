@@ -1,35 +1,30 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "../ui/button";
-
-interface Option {
-  name: string;
-  checked: boolean;
-}
-
-const initOptions: Option[] = [
-  { name: "workshops", checked: false },
-  { name: "language", checked: false },
-  { name: "courses", checked: false },
-  { name: "clubs", checked: false },
-  { name: "events", checked: false },
-];
+import { useDispath, useSelector } from "@/lib/redux";
+import { selectSearchQuery } from "@/lib/redux/slices/selectors";
+import { Option, searchSlice } from "@/lib/redux/slices/search/reducers";
 
 export default function Filters() {
-  const [options, setOptions] = useState(initOptions);
+  const { filters } = useSelector(selectSearchQuery);
+  const dispatch = useDispath();
+  // const [options, setOptions] = useState(initFilterOptions);
+
+  // const handleOptionClick = (index: number) => {
+  //   const newOptions = [...options];
+  //   newOptions[index] = {
+  //     ...newOptions[index],
+  //     checked: !newOptions[index].checked,
+  //   };
+  //   setOptions(newOptions);
+  // };
 
   const handleOptionClick = (index: number) => {
-    const newOptions = [...options];
-    newOptions[index] = {
-      ...newOptions[index],
-      checked: !newOptions[index].checked,
-    };
-    setOptions(newOptions);
+    dispatch(searchSlice.actions.toogleFiltercheck({ filterIdx: index }));
   };
-
   return (
     <div className="flex flex-wrap gap-2">
-      {options.map((option, index) => (
+      {filters.map((option, index) => (
         <Button
           onClick={() => handleOptionClick(index)} // Pass a function that calls handleOptionClick with the index
           key={index}
