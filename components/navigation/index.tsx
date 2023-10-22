@@ -2,10 +2,10 @@ import React from "react";
 import { ThemeToggler } from "@/components/common/themeToggler";
 import Image from "next/image";
 import Avatar from "./avatar";
-import { SignInWithGoogle } from "./googleBtn";
 import Link from "next/link";
 import { Session } from "next-auth";
 import { Button } from "../ui/button";
+import SignInBtn from "./signInBtn";
 
 export default async function Navigation({
   session,
@@ -26,13 +26,7 @@ export default async function Navigation({
         </Link>
         <div className="flex justify-end items-center gap-2">
           <ThemeToggler />
-          {session ? (
-            <Avatar />
-          ) : (
-            <Button>
-              <Link href={"/login"}>Sign In</Link>
-            </Button>
-          )}
+          {session ? <Avatar /> : <SignInBtn />}
         </div>
       </div>
     </div>

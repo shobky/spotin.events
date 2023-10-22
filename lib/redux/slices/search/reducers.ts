@@ -1,17 +1,27 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import {
+  LucideIcon,
+  Filter,
+  Languages,
+  ClubIcon,
+  Target,
+  Calendar,
+  Presentation,
+} from "lucide-react";
 
 export interface Option {
   name: string;
   checked: boolean;
+  icon?: LucideIcon;
 }
 
 export const initFilterOptions: Option[] = [
-  { name: "All", checked: true },
-  { name: "Workhshop", checked: false },
-  { name: "languages", checked: false },
-  { name: "courses", checked: false },
-  { name: "clubs", checked: false },
-  { name: "events", checked: false },
+  { name: "All", checked: true, icon: Filter },
+  { name: "Workhshop", checked: false, icon: Target },
+  { name: "languages", checked: false, icon: Languages },
+  { name: "courses", checked: false, icon: Presentation },
+  { name: "clubs", checked: false, icon: ClubIcon },
+  { name: "events", checked: false, icon: Calendar },
 ];
 
 interface SearchState {

@@ -44,7 +44,7 @@ export default function EventList({
         filteredEvents.length > 0 ? (
           filteredEvents.map(event => <Event event={event} key={event.id} />)
         ) : (
-          <EmptyEventList />
+          <EmptyEventList recommendedEvents={recommendedEvents} />
         )
       ) : (
         <EventsSkeleton />
@@ -53,9 +53,19 @@ export default function EventList({
   );
 }
 
-const EmptyEventList = () => {
+const EmptyEventList = ({
+  recommendedEvents,
+}: {
+  recommendedEvents: EventT[] | undefined;
+}) => {
   return (
-    <div className="flex flex-col justify-center items-center gap-4 w-[calc(100vw-2rem)] sm:w-[65vw] sm:h-[70vh] ">
+    <div
+      className={`flex flex-col justify-center items-center gap-4 ${
+        recommendedEvents
+          ? " w-[95vw] sm:w-[40vw]"
+          : "w-[calc(100vw-2rem)] sm:w-[65vw] sm:h-[70vh]"
+      }`}
+    >
       <p className="text-semibold text-lg opacity-75 text-foreground/90 ">
         That was all the events we have.
       </p>

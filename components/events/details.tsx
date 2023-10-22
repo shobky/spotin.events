@@ -5,6 +5,7 @@ import { EventT, ViewT } from "@/types";
 import CloseModal from "../modal/close";
 import CalendarBtn from "./calendarBtn";
 import { format } from "date-fns";
+import { CalendarCheck2, CalendarPlus } from "lucide-react";
 
 type Props = {
   event: EventT;
@@ -75,11 +76,20 @@ export default function EventDetails({ event, view }: Props) {
           </article>
         )}
         <Button
-          className="mt-4  rounded-3xl w-full  "
+          disabled={event.checked}
+          className="mt-4 w-full text-md flex justify-center items-center gap-4"
           size={"lg"}
           variant={"default"}
         >
-          Add to calendar
+          {event.checked ? (
+            <>
+              <CalendarCheck2 className=" scale-90" /> In Calendar
+            </>
+          ) : (
+            <>
+              <CalendarPlus className=" scale-90" /> Add to calendar
+            </>
+          )}
         </Button>
       </section>
     </div>

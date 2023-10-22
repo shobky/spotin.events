@@ -1,19 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function SignoutBtn() {
-  const [loading, setLoading] = useState<boolean>();
-  useEffect(() => {
-    return setLoading(false);
-  }, []);
+  const router = useRouter();
+
   return (
     <DropdownMenuItem
-      onClick={() => signOut()}
+      onClick={() => router.push("/signout")}
       className="bg-destructive text-destructive-foreground font-medium"
     >
-      {loading && "..."} Log out
+      Sign out
     </DropdownMenuItem>
   );
 }

@@ -12,21 +12,22 @@ export default function Searchbox() {
   const dispatch = useDispath();
 
   return (
-    <div className="flex realtive items-center">
+    <div className="flex relative items-center">
       <Input
+        name="searchQuery"
         type="text"
         value={searchQuery}
         onChange={e =>
           dispatch(searchSlice.actions.search({ q: e.target.value }))
         }
         placeholder="Quick Search.."
-        className="py-2 pr-10 h-10 w-full text-md rounded-xl"
+        className="pr-10 h-10 w-full text-md rounded-xl"
       />
       <Button
         onClick={() => dispatch(searchSlice.actions.search({ q: "" }))}
         size={"icon"}
         variant={"secondary"}
-        className=" scale-50 mr-2 absolute right-0 rounded-3xl aspect-square"
+        className=" absolute right-0 scale-50 rounded-3xl"
       >
         <X />
       </Button>

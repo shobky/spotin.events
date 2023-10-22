@@ -6,13 +6,15 @@ import DetailsSkeleton from "@/components/loadingUI/detailsSkeleton";
 import { getEvents } from "@/lib/database/utils";
 import { EventT } from "@/types";
 import EventList from "@/components/events/eventList";
+import { localEventList } from "@/lib/redux/slices/events/reducers";
 
 export default async function Page({ params }: { params: { id: string } }) {
-  let events: EventT[] = await getEvents(8);
+  // let events: EventT[] = await getEvents(8);
+  let events = localEventList;
 
-  if (!events) {
-    return <p>something went wrong</p>;
-  }
+  // if (!events) {
+  //   return <p>something went wrong</p>;
+  // }
   return (
     <div className=" flex flex-col md:flex-row justify-between gap-10 ">
       <div className="md:w-[70%]">
@@ -37,9 +39,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Searchbox />
           <Filters />
         </section>
-        <EventList
-          recommendedEvents={events.filter(e => e.id !== params.id)}
-        />
+        <EventList recommendedEvents={events.filter(e => e.id !== params.id)} />
       </div>
     </div>
   );

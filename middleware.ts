@@ -4,7 +4,7 @@ export default withAuth(function middleware() {}, {
   callbacks: {
     authorized: async ({ req, token }) => {
       if (req.nextUrl.pathname.startsWith("/admin") && token === null) {
-        return true;
+        return false;
       }
       return true;
     },

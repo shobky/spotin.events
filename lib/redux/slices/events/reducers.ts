@@ -1,7 +1,7 @@
 import { EventT } from "@/types";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-const localEventList: EventT[] = [
+export const localEventList: EventT[] = [
   {
     id: "1",
     type: "Workshop",
