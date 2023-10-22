@@ -5,12 +5,15 @@ import EventDetails from "@/components/events/details";
 import DetailsSkeleton from "@/components/loadingUI/detailsSkeleton";
 import { getEvents } from "@/lib/database/utils";
 import { EventT } from "@/types";
-import RecommededEvents from "@/components/events/recommeded";
+import EventList from "@/components/events/eventList";
 
 export default async function Page({ params }: { params: { id: string } }) {
-  let events: EventT[] = await getEvents(4);
+  let events: EventT[] = await getEvents(8);
+  const recommeded = events.filter(e => e.id !== params.id);
 
-
+  if (!events) {
+    return <p>something went wrong</p>;
+  }
   return (
     <div className=" flex flex-col md:flex-row justify-between gap-10 ">
       <div className="md:w-[70%]">
@@ -35,7 +38,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Searchbox />
           <Filters />
         </section>
-        <RecommededEvents active={params.id} events={events} />
+        <EventList events={recommeded} />
       </div>
     </div>
   );

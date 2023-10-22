@@ -16,7 +16,7 @@ export default function Event({ event }: { event: EventT }) {
     <div
       className={`group w-full  aspect-square relative rounded-3xl overflow-hidden`}
     >
-      <div className="absolute right-0 top-0 z-[21] p-2 gap-1 ">
+      <div className="absolute right-0 top-0 z-[21] p-2 ">
         <CalendarBtn event={event} />
         <ADMINONLY>
           <EventMoreOptions event={event} />
@@ -28,6 +28,7 @@ export default function Event({ event }: { event: EventT }) {
       </p>
       <Image
         src={"/hero-card.jpeg"}
+        // src={event.cover}
         alt={event.name}
         width={200}
         height={200}

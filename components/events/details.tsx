@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { EventT, ViewT } from "@/types";
 import CloseModal from "../modal/close";
-import { format, lightFormat } from "date-fns";
+import { format, lightFormat, parseISO } from "date-fns";
+import CalendarBtn from "./calendarBtn";
 
 type Props = {
   event: EventT;
@@ -14,7 +15,9 @@ export default function EventDetails({ event, view }: Props) {
   return (
     <div
       className={` flex flex-col sm:flex-row flex-shrink-0  h-[100%]
-       ${view && ` border  rounded-3xl`}  w-full relative text-foreground `}
+       ${
+         view !== "modal" && ` border  rounded-3xl border-input`
+       }  w-full relative text-foreground `}
     >
       <CloseModal view={view} />
       <Image
@@ -32,14 +35,16 @@ export default function EventDetails({ event, view }: Props) {
             <h1 className="text-3xl font-semibold">{event?.name}</h1>
             <h3 className="font-light text-sm">with {event?.facilitator}</h3>
           </div>
-          {/* <SaveButton name={event?.name} /> */}
+          <CalendarBtn view={view} event={event} />
         </div>
         <hr className=" opacity-15 border-stone-800 " />
         <h2 className="grid gap-1 items-start relative">
           <span className="block bg-green-400 rounded-full w-2 h-2 absolute top-[8px]"></span>
-          <span className="ml-4  -mb-2 "> 08:30 PM</span> {format(event.date, "LLLL do, yyyy")}
+          <span className="ml-4  -mb-2 "> 08:30 PM</span>{" "}
+          {/* {format(new Date(event?.date), "MMMM do, yyyy h:mma")} */}
         </h2>
         <article className="text-sm ">
+          {event.type}
           <p>
             {" "}
             lorem ipsum dolor isan, dolo lorem ipsa glorey fiansl.lorem ipsum

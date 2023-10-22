@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import SignoutBtn from "./signout";
+import Link from "next/link";
 export function AvatarMenu({ user }: { user: any }) {
   return (
     <DropdownMenu>
@@ -32,13 +33,13 @@ export function AvatarMenu({ user }: { user: any }) {
               {String(user?.name)}
             </p>
             <p className="text-xs leading-none text-muted-foreground">
-              {String(user?.email)}
+              {String(user?.email)} 
             </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          {/* <DropdownMenuItem>Account</DropdownMenuItem> */}
+          <Link href="/admin/event/new"><DropdownMenuItem>New Event</DropdownMenuItem></Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <SignoutBtn />

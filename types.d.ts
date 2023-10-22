@@ -12,18 +12,6 @@ export type EventT = {
   checked: boolean;
 };
 
-const initialEvent = {
-  id: "",
-  type: "",
-  name: "",
-  date: new Date(),
-  time: 0,
-  facilitator: "",
-  cover: "",
-  location: "",
-  article: "",
-  checked: false,
-};
 export type EventKey =
   | "id"
   | "name"

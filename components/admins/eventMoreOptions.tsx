@@ -29,7 +29,7 @@ export default function EventMoreOptions({ event }: { event: EventT }) {
   };
 
   return (
-    <div>
+    <div className="mt-2">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
