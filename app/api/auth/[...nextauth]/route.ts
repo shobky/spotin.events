@@ -12,7 +12,7 @@ export const AuthConfig = {
 
     // ...add more providers here
   ],
-  secret: "jfksdlfjlkdsfjdsklfjdskl",
+  secret: process.env.NEXTAUTH_SECRET,
 } satisfies NextAuthConfig;
 
 const handler = NextAuth(AuthConfig);
