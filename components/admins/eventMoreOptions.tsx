@@ -24,7 +24,8 @@ export default function EventMoreOptions({ event }: { event: EventT }) {
   const router = useRouter();
 
   const handleEditEvent = () => {
-    dispatch(eventActiveSlice.actions.selectEditEvent({ event }));
+    dispatch(eventActiveSlice.actions.setInitalStateForEditEvent({ event }));
+
     router.push(`/admin/event/edit/${event.id}`);
   };
 
@@ -36,7 +37,7 @@ export default function EventMoreOptions({ event }: { event: EventT }) {
             variant="none"
             className="rounded-full w-full aspect-square p-2  text-white  hover:bg-black/20   "
           >
-           <MoreHorizontal />
+            <MoreHorizontal />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[200px]">

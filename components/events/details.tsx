@@ -3,8 +3,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { EventT, ViewT } from "@/types";
 import CloseModal from "../modal/close";
-import { format, lightFormat, parseISO } from "date-fns";
 import CalendarBtn from "./calendarBtn";
+import { format } from "date-fns";
 
 type Props = {
   event: EventT;
@@ -23,13 +23,18 @@ export default function EventDetails({ event, view }: Props) {
        }  w-full relative text-foreground `}
     >
       <CloseModal view={view} />
-      <Image
-        src={event.cover}
-        alt=""
-        width={400} 
-        height={800}
-        className="rounded-3xl sm:rounded-r-none aspect-square sm:h-full  h-1/2 w-full sm:w-1/2 object-cover relative z-10 "
-      />
+      {event.cover ? (
+        <Image
+          // src={event.cover}
+          src={`/random/event${event.id}.jpg`}
+          alt=""
+          width={400}
+          height={800}
+          className="rounded-3xl sm:rounded-r-none aspect-square sm:h-full  h-1/2 w-full sm:w-1/2 object-cover relative z-10 "
+        />
+      ) : (
+        <div className="rounded-3xl sm:rounded-r-none aspect-square sm:h-full  h-1/2 w-full sm:w-1/2 object-cover relative z-10  bg-secondary "></div>
+      )}
       <div className="absolute z-0 rounded-3xl sm:rounded-r-none aspect-square sm:h-full h-1/2 w-full sm:w-1/2 animate-pulse dark:bg-stone-500"></div>
 
       <section
@@ -46,28 +51,29 @@ export default function EventDetails({ event, view }: Props) {
         <h2 className="grid gap-1 items-start relative">
           <span className="block bg-green-400 rounded-full w-2 h-2 absolute top-[8px]"></span>
           <span className="ml-4  -mb-2 "> 08:30 PM</span>{" "}
-          {/* {format(new Date(event?.date), "MMMM do, yyyy h:mma")} */}
+          {format(new Date(), "MMMM do, yyyy h:mma")}
         </h2>
-        <article className="text-sm ">
-          {event.type}
-          <p>
-            {" "}
-            lorem ipsum dolor isan, dolo lorem ipsa glorey fiansl.lorem ipsum
-            dolor isan dolo lorem ipsa glorey fiansl lorem ipsum dolor isan dolo
-            lorem ipsa glorey fiansl lorem ipsum dolor isan dolo lorem ipsa
-            glorey fiansl. dolor isan dolo lorem ipsa glorey fiansl lorem ipsum
-            dolor isan dolo lorem ipsa glorey fiansl lorem ipsum dolor isan dolo
-            lorem ipsa glorey fiansl
-          </p>
-          <br />
-          <p>
-            {" "}
-            lorem ipsum dolor isan, dolo lorem ipsa glorey fiansl.lorem ipsum
-            dolor isan dolo lorem ipsa glorey fiansl lorem ipsum dolor isan dolo
-            lorem ipsa glorey fiansl lorem ipsum dolor isan dolo lorem ipsa
-            glorey fiansl.
-          </p>
-        </article>
+        {event.id && (
+          <article className="text-sm ">
+            <p>
+              {" "}
+              lorem ipsum dolor isan, dolo lorem ipsa glorey fiansl.lorem ipsum
+              dolor isan dolo lorem ipsa glorey fiansl lorem ipsum dolor isan
+              dolo lorem ipsa glorey fiansl lorem ipsum dolor isan dolo lorem
+              ipsa glorey fiansl. dolor isan dolo lorem ipsa glorey fiansl lorem
+              ipsum dolor isan dolo lorem ipsa glorey fiansl lorem ipsum dolor
+              isan dolo lorem ipsa glorey fiansl
+            </p>
+            <br />
+            <p>
+              {" "}
+              lorem ipsum dolor isan, dolo lorem ipsa glorey fiansl.lorem ipsum
+              dolor isan dolo lorem ipsa glorey fiansl lorem ipsum dolor isan
+              dolo lorem ipsa glorey fiansl lorem ipsum dolor isan dolo lorem
+              ipsa glorey fiansl.
+            </p>
+          </article>
+        )}
         <Button
           className="mt-4  rounded-3xl w-full  "
           size={"lg"}
