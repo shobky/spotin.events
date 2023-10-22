@@ -5,6 +5,7 @@ import Avatar from "./avatar";
 import { SignInWithGoogle } from "./googleBtn";
 import Link from "next/link";
 import { Session } from "next-auth";
+import { Button } from "../ui/button";
 
 export default async function Navigation({
   session,
@@ -25,7 +26,13 @@ export default async function Navigation({
         </Link>
         <div className="flex justify-end items-center gap-2">
           <ThemeToggler />
-          {session ? <Avatar /> : <SignInWithGoogle />}
+          {session ? (
+            <Avatar />
+          ) : (
+            <Button>
+              <Link href={"/login"}>Sign In</Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>

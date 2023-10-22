@@ -35,10 +35,10 @@ export default function Modal({ children }: { children: React.ReactNode }) {
   return (
     <div
       ref={overlay}
-      className="fixed left-0 right-0 px-4 sm:px-0 top-0 bottom-0 bg-black/70 z-40 flex justify-center items-center w-full"
+      className="fixed left-0 right-0 px-4 sm:px-0 top-0 bottom-0 bg-black/70 z-40 flex justify-center items-center h-full w-full"
       onClick={onClick}
     >
-      <div ref={wrapper} className=" w-full sm:w-1/2 h-[85svh] sm:h-[80%]">
+      <div ref={wrapper} className=" w-full sm:w-1/2 h-[85svh] sm:h-[80%]  flex justify-center items-center">
         {children}
       </div>
     </div>

@@ -4,7 +4,6 @@ export type EventT = {
   type: string;
   name: string;
   date: day;
-  time: number;
   facilitator: string;
   cover: string;
   location: string;

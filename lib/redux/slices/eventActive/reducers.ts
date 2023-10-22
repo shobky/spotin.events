@@ -15,7 +15,6 @@ const initialState: EventActiveState = {
     type: "",
     name: "",
     date: new Date(),
-    time: 0,
     facilitator: "",
     cover: "",
     location: "",

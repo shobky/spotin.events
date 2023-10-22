@@ -6,7 +6,7 @@ import Image from "next/image";
 export const SignInWithGoogle = () => {
   return (
     <Button
-      className="hidden sm:flex rounded-3xl px-2 h-8 text-sm font-normal relative gap-2 overflow-hidden bg-primary text-white hover:opacity-80"
+      className="flex w-full rounded-xl  h-14 font-normal relative gap-2   overflow-hidde bg-blue-700 text-white hover:opacity-80"
       variant={"none"}
       onClick={() => signIn("google")}
     >
@@ -15,10 +15,11 @@ export const SignInWithGoogle = () => {
         width={16}
         height={16}
         alt="G"
-        className=" bg-white  w-[22px] h-[22px]  rounded-full p-[4px]"
+        className=" bg-white  w-[24%] sm:w-[20%] h-14  p-2 absolute -left-[1px] rounded-l-xl  border border-r-0 border-input "
       />
-      <span className="text-center block sm:hidden">Sign in </span>
-      <span className="text-center sm:block hidden">Sign in with Google</span>
+      <span className="text-center sm:block text-md sm:text-xl ml-[24%]">
+        Continue with Google
+      </span>
     </Button>
   );
 };
