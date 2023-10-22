@@ -27,8 +27,8 @@ export default function Event({ event }: { event: EventT }) {
         27 DEC
       </p>
       <Image
-        src={"/hero-card.jpeg"}
-        // src={event.cover}
+        // src={"/hero-card.jpeg"}
+        src={event.cover}
         alt={event.name}
         width={200}
         height={200}
@@ -47,7 +47,7 @@ export default function Event({ event }: { event: EventT }) {
             fontSize:
               "calc(18px + (24 - 16) * ((90vw - 320px) / (1920 - 320)))",
           }}
-          className="font-medium  text-white"
+          className="font-medium  text-white leading-7 mb-2"
         >
           {event.name}
         </p>

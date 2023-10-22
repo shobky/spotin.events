@@ -12,9 +12,9 @@ export default function Events({
 }) {
   const dispatch = useDispath();
 
-  useLayoutEffect(() => {
-    dispatch(eventsSlice.actions.populate({ events: firstEventsPatch }));
-  }, [firstEventsPatch]);
+  // useLayoutEffect(() => {
+  //   dispatch(eventsSlice.actions.populate({ events: firstEventsPatch }));
+  // }, [firstEventsPatch]);
 
   return (
     <div className="flex flex-col w-full  gap-2">

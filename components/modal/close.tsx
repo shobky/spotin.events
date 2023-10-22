@@ -19,7 +19,7 @@ export default function CloseModal({ view }: { view: ViewT }) {
       disabled={view === "editor-view"}
       variant={"ghost"}
       size={"icon"}
-      className=" rounded-full absolute top-0 left-0 m-3 z-20 scale-90 text-white "
+      className=" rounded-full absolute top-0 left-0 m-3 z-20 scale-90 text-foreground hover:border border-input "
       onClick={handleCloseModal}
     >
       <Cross1Icon className="" />
