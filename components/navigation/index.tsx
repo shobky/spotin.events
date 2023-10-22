@@ -13,7 +13,7 @@ export default async function Navigation({
 }) {
   return (
     <div className="relative h-[4rem] box-border mb-4">
-      <div className=" left-0 top-0 w-full h-[4rem] sm:px-10 px-4 relative z-10  flex items-center justify-between">
+      <div className="sm:fixed sm:bg-background left-0 top-0 w-full h-[4rem] sm:px-10 px-4 relative z-40  flex items-center justify-between">
         <Link href={"/"}>
           <Image
             alt="spotin"
