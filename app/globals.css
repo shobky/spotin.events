@@ -80,3 +80,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* width */
+.event-details-scrollable::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.event-details-scrollable::-webkit-scrollbar-track {
+  background: #000000;
+  border-radius:  0 1.5rem 1.5rem 0;
+  margin: 25px 0;
+}
+
+/* Handle */
+.event-details-scrollable::-webkit-scrollbar-thumb {
+  background: #8d8d8d;
+}
+
+/* Handle on hover */
+.event-details-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

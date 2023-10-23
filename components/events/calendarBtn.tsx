@@ -13,14 +13,18 @@ export default function CalendarBtn({
   const [checked, setChecked] = useState(event.checked);
   return (
     <Button
-      disabled={checked}
       variant={checked ? "default" : "ghost"}
-      className={`rounded-3xl ${!checked && "hover:bg-black/20"} ${
+      disabled={checked}
+      className={`rounded-full p-2 ${
         view === "modal" ? "text-foreground" : "text-white hover:text-white"
       }`}
       size={"icon"}
     >
-      {checked ? <CalendarCheck2 /> : <CalendarPlus />}
+      {checked ? (
+        <CalendarCheck2 className="w-8 h-8" />
+      ) : (
+        <CalendarPlus className="w-8 h-8" />
+      )}
     </Button>
   );
 }

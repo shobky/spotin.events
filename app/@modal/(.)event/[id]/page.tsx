@@ -1,19 +1,27 @@
-"use client";
+import { AuthConfig } from "@/app/api/auth/[...nextauth]/route";
 import EventDetails from "@/components/events/details";
 import Modal from "@/components/modal";
-import { useSelector } from "@/lib/redux";
-import { selectEventActive, selectEvents } from "@/lib/redux/slices/selectors";
-import { EventT } from "@/types";
+import { getServerSession } from "next-auth";
+import { cookies } from "next/headers";
 import React from "react";
 
-export default function Page({ params }: { params: { id: string } }) {
-  const { events } = useSelector(selectEvents);
-  const { selectedModalEvent } = useSelector(selectEventActive);
+export default async function Page({ params }: { params: { id: string } }) {
+  const session = await getServerSession(AuthConfig);
+  const cookieStore = cookies();
 
-  const event: EventT[] = events?.filter(item => item.id === params.id);
+  const apiKey = process.env.GOOGLE_API_KEY;
+  const calendarID = session?.user?.email;
+  const accessToken = cookieStore.get("access_token");
+
+  const calendarData = {
+    user: session?.user,
+    apiKey,
+    calendarID,
+    accessToken: accessToken?.value,
+  };
   return (
     <Modal>
-      <EventDetails view="modal" event={selectedModalEvent || event[0]} />
+      <EventDetails calendarData={calendarData} view="modal" />
     </Modal>
   );
 }

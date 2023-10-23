@@ -10,17 +10,17 @@ interface EventActiveState {
 const initialState: EventActiveState = {
   selectedModalEvent: undefined,
   selectedEditEvent: undefined,
-  newEvent: {
-    id: "",
-    type: "",
-    name: "",
-    date: new Date(),
-    facilitator: "",
-    cover: "",
-    location: "",
-    article: "",
-    checked: false,
-  },
+    newEvent: {
+      id: "",
+      type: "",
+      name: "",
+      date: new Date(),
+      facilitator: "",
+      cover: "",
+      location: "",
+      article: "",
+      checked: false,
+    },
 };
 
 export const eventActiveSlice = createSlice({

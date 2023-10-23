@@ -12,7 +12,7 @@ export default function Signin({ session }: { session: Session | null }) {
         src={"/logo.png"}
         width={400}
         height={400}
-        className=" w-[60%]  aspect-square hover:scale-125 ease-in-out duration-500"
+        className=" w-[60%]  aspect-square hover:scale-125 ease-in-out duration-500 z-10"
       />
       {session ? (
         <div>

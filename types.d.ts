@@ -21,3 +21,35 @@ export type EventKey =
   | "type";
 
 export type ViewT = "modal" | "editor-view" | "page";
+
+export type CalendarData = {
+  user:
+    | {
+        name?: string | null | undefined;
+        email?: string | null | undefined;
+        image?: string | null | undefined;
+      }
+    | undefined;
+  apiKey: string | undefined;
+  calendarID: string | null | undefined;
+  accessToken: RequestCookie | undefined;
+};
+
+export type GoogleCalendarEvent = {
+  summary: string;
+  location: string;
+  description: string;
+  start: {
+    dateTime: date;
+    timeZone: string;
+  };
+  end: {
+    dateTime: date;
+    timeZone: string;
+  };
+  recurrence: string[];
+  attendees: {
+    email: string;
+  }[];
+  reminders: any;
+};

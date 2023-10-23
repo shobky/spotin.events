@@ -27,7 +27,7 @@ export default function Signout({
         height={600}
         className={`${
           view === "page" ? "w-[30%]" : "w-[60%]"
-        } rounded-full  aspect-square hover:scale-125 ease-in-out duration-500`}
+        } rounded-full  aspect-square hover:scale-125 ease-in-out duration-500 z-10`}
       />
 
       <div

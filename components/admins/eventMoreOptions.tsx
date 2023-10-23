@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +15,7 @@ import {
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { EventT } from "@/types";
-import { useDispath, useSelector } from "@/lib/redux";
+import { useDispath } from "@/lib/redux";
 import { eventActiveSlice } from "@/lib/redux/slices/eventActive/reducers";
 import { MoreHorizontal } from "lucide-react";
 
@@ -28,7 +28,6 @@ export default function EventMoreOptions({ event }: { event: EventT }) {
 
     router.push(`/admin/event/edit/${event.id}`);
   };
-
   return (
     <div className="mt-2">
       <DropdownMenu>

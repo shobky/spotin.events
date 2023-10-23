@@ -17,11 +17,11 @@ export interface Option {
 
 export const initFilterOptions: Option[] = [
   { name: "All", checked: true, icon: Filter },
-  { name: "Workhshop", checked: false, icon: Target },
-  { name: "languages", checked: false, icon: Languages },
-  { name: "courses", checked: false, icon: Presentation },
-  { name: "clubs", checked: false, icon: ClubIcon },
-  { name: "events", checked: false, icon: Calendar },
+  { name: "Workshop", checked: false, icon: Target },
+  { name: "Languages", checked: false, icon: Languages },
+  { name: "Courses", checked: false, icon: Presentation },
+  { name: "Clubs", checked: false, icon: ClubIcon },
+  { name: "Events", checked: false, icon: Calendar },
 ];
 
 interface SearchState {

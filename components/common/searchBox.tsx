@@ -14,6 +14,7 @@ export default function Searchbox() {
   return (
     <div className="flex relative items-center">
       <Input
+        autoComplete="off"
         name="searchQuery"
         type="text"
         value={searchQuery}

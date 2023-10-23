@@ -4,27 +4,28 @@ import { eventActiveSlice } from "@/lib/redux/slices/eventActive/reducers";
 import { EventT } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useMemo } from "react";
 import CalendarBtn from "./calendarBtn";
 import EventMoreOptions from "../admins/eventMoreOptions";
 import ADMINONLY from "../admins/adminOnly";
 
 export default function Event({ event }: { event: EventT }) {
   const dispatch = useDispath();
+  const memoizedEvent = useMemo(() => event, [event]); 
 
   return (
     <div
       className={`group w-full  aspect-square relative rounded-3xl overflow-hidden`}
     >
       <div className="absolute right-0 top-0 z-[21] p-2 ">
-        <CalendarBtn event={event} />
+        <CalendarBtn event={memoizedEvent} />
         <ADMINONLY>
-          <EventMoreOptions event={event} />
+          <EventMoreOptions event={memoizedEvent} />
         </ADMINONLY>
       </div>
 
       <p className="absolute top-1 left-0 text-sm  font-semibold text-white m-3 z-[31] ">
-        27 DEC
+        27 DEC 
       </p>
       {event.cover ? (
         <Image

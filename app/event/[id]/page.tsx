@@ -1,12 +1,10 @@
 import React from "react";
 import Searchbox from "@/components/common/searchBox";
 import Filters from "@/components/common/filters";
-import EventDetails from "@/components/events/details";
 import DetailsSkeleton from "@/components/loadingUI/detailsSkeleton";
-import { getEvents } from "@/lib/database/utils";
-import { EventT } from "@/types";
 import EventList from "@/components/events/eventList";
 import { localEventList } from "@/lib/redux/slices/events/reducers";
+import EventDetails from "@/components/events/details";
 
 export default async function Page({ params }: { params: { id: string } }) {
   // let events: EventT[] = await getEvents(8);
@@ -26,7 +24,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             {events ? (
               <EventDetails
                 view="page"
-                event={events.filter(e => e.id === params.id)[0]}
+                eventFromPage={events.filter(e => e.id === params.id)[0]}
               />
             ) : (
               <DetailsSkeleton />

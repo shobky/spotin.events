@@ -1,5 +1,4 @@
 "use client";
-import EventDetails from "@/components/events/details";
 import Event from "@/components/events/event";
 import { useDispath, useSelector } from "@/lib/redux";
 import { eventActiveSlice } from "@/lib/redux/slices/eventActive/reducers";
@@ -7,6 +6,7 @@ import { selectEventActive } from "@/lib/redux/slices/selectors";
 import { EventT } from "@/types";
 import React, { useEffect } from "react";
 import EditorForm from "./form";
+import EventDetails from "@/components/events/details";
 
 export default function Index({ event }: { event?: EventT }) {
   const { newEvent } = useSelector(selectEventActive);
@@ -22,7 +22,7 @@ export default function Index({ event }: { event?: EventT }) {
         <div className=" w-[50%] sm:w-[35%]">
           <Event event={newEvent} />
         </div>
-        <EventDetails view="editor-view" event={newEvent} />
+        {/* <EventDetails view="editor-view" event={newEvent} /> */}
       </div>
       <EditorForm />
     </main>
