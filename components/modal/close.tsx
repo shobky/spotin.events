@@ -3,9 +3,9 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
-import { ViewT } from "@/types";
+import { DetailsVariant } from "@/types";
 
-export default function CloseModal({ view }: { view: ViewT }) {
+export default function CloseModal({ view }: { view: DetailsVariant }) {
   const router = useRouter();
   const handleCloseModal = () => {
     if (view === "modal") {

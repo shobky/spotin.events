@@ -14,7 +14,6 @@ export type EventT = {
 
 export type DetailsVariant = "modal" | "editor-view" | "page" | "event";
 export type CalendarBtnVariant = "icon" | "default";
-export type ViewT = "modal" | "editor-view" | "page";
 
 export type CalendarData =
   | {
