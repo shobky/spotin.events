@@ -2,17 +2,18 @@ import React from "react";
 import Searchbox from "@/components/common/searchBox";
 import Filters from "@/components/common/filters";
 import DetailsSkeleton from "@/components/loadingUI/detailsSkeleton";
-import EventList from "@/components/events/eventList";
 import { localEventList } from "@/lib/redux/slices/events/reducers";
-import EventDetails from "@/components/events/details";
+import Events from "@/components/events";
+import EventDetailsWithSession from "@/components/common/calendarAPI/eventDetailsWithSession";
 
 export default async function Page({ params }: { params: { id: string } }) {
   // let events: EventT[] = await getEvents(8);
-  let events = localEventList;
-
   // if (!events) {
   //   return <p>something went wrong</p>;
   // }
+
+  let events = localEventList;
+
   return (
     <div className=" flex flex-col md:flex-row justify-between gap-10 ">
       <div className="md:w-[70%]">
@@ -22,7 +23,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         >
           <>
             {events ? (
-              <EventDetails
+              <EventDetailsWithSession
                 view="page"
                 eventFromPage={events.filter(e => e.id === params.id)[0]}
               />
@@ -37,7 +38,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Searchbox />
           <Filters />
         </section>
-        <EventList recommendedEvents={events.filter(e => e.id !== params.id)} />
+        <Events data={events.filter(e => e.id !== params.id)} />
       </div>
     </div>
   );

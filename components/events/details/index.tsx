@@ -1,28 +1,32 @@
 "use client";
 import React from "react";
-import { CalendarData, EventT, ViewT } from "@/types";
+import { EventT, DetailsVariant } from "@/types";
 import CloseModal from "@/components/modal/close";
 import DetailsCover from "./cover";
-import CalendarBtn from "../calendarBtn";
 import DetailsDate from "./date";
 import DetailsTypes from "./type";
 import DetailsArticle from "./article";
-import DetailsButton from "./button";
 import { useSelector } from "@/lib/redux";
 import { selectEventActive } from "@/lib/redux/slices/selectors";
+import AddToCalendar from "@/components/common/calendarAPI/addToCalendar";
+import { Session } from "next-auth";
+
 type Props = {
-  view: ViewT;
-  calendarData?: CalendarData;
+  view: DetailsVariant;
   eventFromPage?: EventT;
+  calendarData?: {
+    session: Session | null;
+    accessToken: string | undefined;
+  };
 };
 
 export default function EventDetails({
   view,
-  calendarData,
   eventFromPage,
+  calendarData,
 }: Props) {
   const { selectedModalEvent } = useSelector(selectEventActive);
-  const event = selectedModalEvent || eventFromPage;
+  const event = eventFromPage || selectedModalEvent; //eventFromPage is from page/[id]
   if (!event) {
     return <>something went wrong, REFRESH.</>;
   }
@@ -43,14 +47,22 @@ export default function EventDetails({
             </h3>
             <DetailsDate date={event.date} />
           </div>
-          <CalendarBtn view={view} event={event} />
+          <AddToCalendar
+            view={view}
+            event={event}
+            variant="icon"
+            calendarData={calendarData}
+          />
         </div>
         <hr className=" opacity-15 border-stone-800 my-2 " />
         <DetailsTypes types={[event.type]} />
         <hr className=" opacity-15 border-stone-800 my-2" />
         {event.id && <DetailsArticle article={event.article} />}
-
-        <DetailsButton calendarData={calendarData} checked={event.checked} />
+        <AddToCalendar
+          event={event}
+          variant="default"
+          calendarData={calendarData}
+        />
       </section>
     </div>
   );

@@ -4,7 +4,6 @@ import Image from "next/image";
 import Avatar from "./avatar";
 import Link from "next/link";
 import { Session } from "next-auth";
-import { Button } from "../ui/button";
 import SignInBtn from "./signInBtn";
 
 export default async function Navigation({

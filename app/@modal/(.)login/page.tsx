@@ -10,7 +10,7 @@ export default async function page() {
 
   return (
     <Modal>
-      <div className="relative text-white w-[90%] sm:w-2/3 aspect-square rounded-2xl p-8 flex flex-col items-center justify-evenly ">
+      <div className="relative text-white w-[90%] lg:w-2/3 aspect-square rounded-2xl p-8 flex flex-col items-center justify-evenly ">
         <AuthBg />
         <Signin session={session} />
       </div>

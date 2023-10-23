@@ -36,7 +36,7 @@ export const SignInWithGoogle = () => {
             alt="G"
             className=" bg-white  w-[24%] sm:w-[20%] h-14  p-2 absolute -left-[1px] rounded-l-xl  "
           />
-          <span className="text-center sm:block text-md sm:text-xl ml-[24%]">
+          <span className="text-center sm:block text-sm ml-[24%]">
             Continue with Google
           </span>
         </>
